@@ -28,6 +28,10 @@ public class LRUListNode<T> {
         this.next = next;
     }
 
+    public LRUListNode(){
+        this.next = null;
+    }
+
     public LRUListNode getNext() {
         return next;
     }
