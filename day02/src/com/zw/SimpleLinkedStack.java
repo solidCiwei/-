@@ -28,34 +28,46 @@ public class SimpleLinkedStack {
     int size;
 
     public SimpleLinkedStack() {
-        head = new StackNode(0);
+        head = new StackNode("");
         this.capacity = 10;
         this.size = 0;
     }
 
-    public void push(int val) {
-        if (size==capacity) return;
+    public void push(String val) {
+        if (size == capacity) return;
         StackNode node = new StackNode(val);
         node.next = head.next;
         head.next = node;
         size++;
     }
 
-    public int pop(){
-        if (head.next==null)return -1;
+    public String pop() {
+        if (head.next == null) {
+            throw new RuntimeException("error! is empty stack");
+        }
         //获取头节点值
-        int r = head.next.val;
+        String r = head.next.val;
         //删除顶部节点
         head.next = head.next.next;
         return r;
     }
 
-    public boolean isEmpty(){
-        return head.next==null;
+    public boolean isEmpty() {
+        return head.next == null;
     }
 
-    public int peek(){
-        if (head.next==null) return -1;
+    public String peek() {
+        if (head.next == null) {
+            throw new RuntimeException("error! is empty stack");
+        }
         return head.next.val;
+    }
+
+    /**
+     * 清空操作
+     */
+    public void clear() {
+        this.head.next = null;
+        size = 0;
     }
 }

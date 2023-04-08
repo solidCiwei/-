@@ -9,11 +9,11 @@ package com.zw;
  */
 public class StackNode {
 
-    int val;
+    String val;
 
     StackNode next;
 
-    public StackNode(int val) {
+    public StackNode(String val) {
         this.val = val;
     }
 }

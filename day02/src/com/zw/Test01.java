@@ -27,13 +27,25 @@ public class Test01 {
 //        while (!stack.isEmpty()){
 //            System.out.println("stack.pop() = " + stack.pop());
 //        }
-        SimpleLinkedStack stack = new SimpleLinkedStack();
-        for (int i = 0; i < 10; i++) {
-            stack.push(i);
-        }
-        System.out.println("stack.peek() = " + stack.peek());
-        while (!stack.isEmpty()){
-            System.out.println("stack.pop() = " + stack.pop());
-        }
+//        SimpleLinkedStack stack = new SimpleLinkedStack();
+//        for (int i = 0; i < 10; i++) {
+//            stack.push(i+"");
+//        }
+//        System.out.println("stack.peek() = " + stack.peek());
+//        while (!stack.isEmpty()){
+//            System.out.println("stack.pop() = " + stack.pop());
+//        }
+        SimpleBrowserGo browserGo = new SimpleBrowserGo();
+        browserGo.open("https://www.baidu.com");
+        browserGo.open("https://www.baidu.com/cn");
+        browserGo.open("https://www.baidu.com/asd");
+        browserGo.open("https://www.baidu.com/qwe");
+        browserGo.goBack();
+        browserGo.goBack();
+        browserGo.goForward();
+        browserGo.open("https://www.baidu.com/top");
+        System.out.println("browserGo.goForward() = " + browserGo.goForward());
+        browserGo.goBack();
+        browserGo.goForward();
     }
 }
