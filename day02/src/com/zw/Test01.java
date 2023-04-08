@@ -10,15 +10,30 @@ package com.zw;
 public class Test01 {
 
     public static void main(String[] args) {
-        LRULinkedList<String> linkedList = new LRULinkedList<>();
-        for (int i = 0; i < 20; i++) {
-            linkedList.add("s" + i);
-            linkedList.printAll();
+//        LRULinkedList<String> linkedList = new LRULinkedList<>();
+//        for (int i = 0; i < 20; i++) {
+//            linkedList.add("s" + i);
+//            linkedList.printAll();
+//        }
+//        linkedList.add("s10");
+//        linkedList.printAll();
+//        linkedList.add("s15");
+//        linkedList.printAll();
+//        SimpleStack stack = new SimpleStack();
+//        for (int i = 0; i < 10; i++) {
+//            stack.push(i);
+//        }
+//        System.out.println("stack.peek() = " + stack.peek());
+//        while (!stack.isEmpty()){
+//            System.out.println("stack.pop() = " + stack.pop());
+//        }
+        SimpleLinkedStack stack = new SimpleLinkedStack();
+        for (int i = 0; i < 10; i++) {
+            stack.push(i);
         }
-        linkedList.add("s10");
-        linkedList.printAll();
-        linkedList.add("s15");
-        linkedList.printAll();
-
+        System.out.println("stack.peek() = " + stack.peek());
+        while (!stack.isEmpty()){
+            System.out.println("stack.pop() = " + stack.pop());
+        }
     }
 }
