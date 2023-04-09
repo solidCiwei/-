@@ -35,17 +35,21 @@ public class Test01 {
 //        while (!stack.isEmpty()){
 //            System.out.println("stack.pop() = " + stack.pop());
 //        }
-        SimpleBrowserGo browserGo = new SimpleBrowserGo();
-        browserGo.open("https://www.baidu.com");
-        browserGo.open("https://www.baidu.com/cn");
-        browserGo.open("https://www.baidu.com/asd");
-        browserGo.open("https://www.baidu.com/qwe");
-        browserGo.goBack();
-        browserGo.goBack();
-        browserGo.goForward();
-        browserGo.open("https://www.baidu.com/top");
-        System.out.println("browserGo.goForward() = " + browserGo.goForward());
-        browserGo.goBack();
-        browserGo.goForward();
+//        SimpleBrowserGo browserGo = new SimpleBrowserGo();
+//        browserGo.open("https://www.baidu.com");
+//        browserGo.open("https://www.baidu.com/cn");
+//        browserGo.open("https://www.baidu.com/asd");
+//        browserGo.open("https://www.baidu.com/qwe");
+//        browserGo.goBack();
+//        browserGo.goBack();
+//        browserGo.goForward();
+//        browserGo.open("https://www.baidu.com/top");
+//        System.out.println("browserGo.goForward() = " + browserGo.goForward());
+//        browserGo.goBack();
+//        browserGo.goForward();
+        SimpleQueue simpleQueue = new SimpleQueue();
+        simpleQueue.add(1);
+        simpleQueue.add(2);
+        simpleQueue.add(-1);
     }
 }
