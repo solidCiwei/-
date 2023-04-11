@@ -2,10 +2,7 @@ package com.zw;
 
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * <p> SortAlgorithmPractice </p >
@@ -20,12 +17,16 @@ public class SortAlgorithmPractice {
 
     @Test
     public void test01() {
-        int[] arr = {3, 1, 2, 5, 6, 4};
+//        int[] arr = {3, 1, 2, 5, 6, 4};
 //        bubbleSort(arr);
 //        System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));
 //        insertSort(arr);
 //        System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));
-        selectSort(arr);
+//        selectSort(arr);
+//        System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));
+        final int[] arr = {1, 2, 3, 4};
+        int[] arr2 = {1,2,3,4,5};
+        arr[0]=10;
         System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));
     }
 
@@ -252,4 +253,159 @@ public class SortAlgorithmPractice {
         }
         return result;
     }
+
+    /**
+     * 二叉树的层序遍历
+     *
+     * @param root
+     * @return
+     */
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        if (root != null) queue.add(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            List<Integer> temp = new ArrayList<>();
+            while (size-- > 0) {
+                TreeNode node = queue.poll();
+                if (node.left != null) queue.add(node.left);
+                if (node.right != null) queue.add(node.right);
+                temp.add(node.val);
+            }
+            result.add(temp);
+        }
+        return result;
+    }
+
+    /**
+     * 二叉树的层序遍历II
+     *
+     * @param root
+     * @return
+     */
+    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        if (root != null) queue.add(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            List<Integer> temp = new ArrayList<>();
+            while (size-- > 0) {
+                TreeNode node = queue.poll();
+                if (node.left != null) queue.add(node.left);
+                if (node.right != null) queue.add(node.right);
+                temp.add(node.val);
+            }
+            result.add(temp);
+        }
+        int left = 0, right = result.size() - 1;
+        while (left < right) {
+            List<Integer> integers = result.get(left);
+            result.set(left, result.get(right));
+            result.set(right, integers);
+            left++;
+            right--;
+        }
+        return result;
+    }
+
+    /**
+     * 二叉树的右视图
+     *
+     * @param root
+     * @return
+     */
+    public List<Integer> rightSideView(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        if (root != null) queue.add(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode node = queue.poll();
+                if (i == size - 1) result.add(node.val);
+                if (node.right != null) queue.add(node.right);
+                if (node.left != null) queue.add(node.left);
+            }
+
+        }
+        return result;
+    }
+
+    /**
+     * 二叉树层平均值
+     *
+     * @param root
+     * @return
+     */
+    public List<Double> averageOfLevels(TreeNode root) {
+        List<Double> result = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        if (root != null) queue.add(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            double sum = 0;
+            for (int i = 0; i < size; i++) {
+                TreeNode node = queue.poll();
+                sum += node.val;
+                if (node.left != null) queue.add(node.left);
+                if (node.right != null) queue.add(node.right);
+            }
+            result.add(sum / size);
+        }
+        return result;
+    }
+
+    /**
+     * N叉树的层序遍历
+     *
+     * @param root
+     * @return
+     */
+    public List<List<Integer>> levelOrder(Node root) {
+        List<List<Integer>> result = new ArrayList<>();
+        Queue<Node> nodes = new LinkedList<>();
+        if (root != null) nodes.add(root);
+        while (!nodes.isEmpty()) {
+            int size = nodes.size();
+            List<Integer> temp = new ArrayList<>();
+            for (int i = 0; i < size; i++) {
+                Node node = nodes.poll();
+                temp.add(node.val);
+                if (node.children != null && !node.children.isEmpty()) {
+                    for (Node n : node.children) {
+                        nodes.add(n);
+                    }
+                }
+            }
+            result.add(temp);
+        }
+        return result;
+    }
+
+    /**
+     * 每个树行中寻找最大值
+     *
+     * @param root
+     * @return
+     */
+    public List<Integer> largestValues(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        if (root != null) queue.add(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            int min = Integer.MAX_VALUE;
+            for (int i = 0; i < size; i++) {
+                TreeNode node = queue.poll();
+                min = Math.min(node.val, min);
+                if (node.left != null) queue.add(node.left);
+                if (node.right != null) queue.add(node.right);
+            }
+            result.add(min);
+        }
+        return result;
+    }
+
 }
